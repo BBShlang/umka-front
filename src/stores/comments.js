@@ -20,13 +20,17 @@ export const useCommentsStore = defineStore('comments', {
       try {
         const comments = await commentApi.getAllByPost(postId)
         this.commentsByPost[postId] = Array.isArray(comments)
-          ? comments.map((comment, index) => ({
-              id: comment.id ?? `comment-without-id-${postId}-${index}`,
-              backendId: comment.id ?? null,
-              authorName: comment.name,
-              text: comment.comment_text,
-              createdAt: comment.createdAt ?? ''
-            }))
+          ? comments.map((comment, index) => {
+              const id = comment.id ?? comment.commentId ?? comment.comment_id ?? null
+
+              return {
+                id: id ?? `comment-without-id-${postId}-${index}`,
+                backendId: id,
+                authorName: comment.name,
+                text: comment.comment_text,
+                createdAt: comment.createdAt ?? ''
+              }
+            })
           : []
       } finally {
         this.isLoading = false

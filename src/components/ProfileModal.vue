@@ -27,7 +27,7 @@
 
         <div class="profile-row">
           <span class="profile-row__label">Роль</span>
-          <span class="profile-row__value">{{ auth.user.role }}</span>
+          <span class="profile-row__value">{{ auth.user.roleLabel || auth.user.role }}</span>
         </div>
       </div>
 

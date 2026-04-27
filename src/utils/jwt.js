@@ -32,7 +32,8 @@ export function extractUserFromToken(token) {
     id: payload.userId || payload.id || null,
     email: payload.sub || payload.email || '',
     fullName: payload.sub || payload.email || '',
-    role: isAdmin ? 'Админ' : 'Пользователь',
+    role: isAdmin ? 'admin' : 'user',
+    roleLabel: isAdmin ? 'admin' : 'user',
     roles: normalizedRoles,
     raw: payload
   }

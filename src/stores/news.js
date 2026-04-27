@@ -8,7 +8,7 @@ function imageUrl(image) {
 }
 
 function normalizePost(post, index = 0) {
-  const id = post?.id ?? post?.postId ?? null
+  const id = post?.id ?? post?.postId ?? post?.post_id ?? null
   const images = Array.isArray(post?.images) ? post.images : []
 
   return {
